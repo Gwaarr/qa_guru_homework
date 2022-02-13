@@ -1,3 +1,6 @@
-
-Autotest.txt
-Autotest.txt
+/gradlew.bat
+/gradlew
+/build/
+/.idea/
+/gradle/
+/.gradle/
