@@ -4,10 +4,10 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
+
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.text;
 
 public class HomeWork {
 
@@ -18,7 +18,7 @@ public class HomeWork {
     }
 
     @Test
-    void successFillTest() throws InterruptedException {
+    void successFillTest()  {
         open("/automation-practice-form");
         $(".main-header").shouldHave(text("Practice Form"));
         $("#firstName").setValue("Momo");
@@ -39,16 +39,17 @@ public class HomeWork {
         $("#submit").click();
 
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Momo Aang"));
-        $(".table-responsive").shouldHave(text("Momo@avatar.com"));
-        $(".table-responsive").shouldHave(text("Male"));
-        $(".table-responsive").shouldHave(text("8911888552"));
-        $(".table-responsive").shouldHave(text("06 March,1998"));
-        $(".table-responsive").shouldHave(text("Biology"));
-        $(".table-responsive").shouldHave(text("Reading"));
-        $(".table-responsive").shouldHave(text("picture.jpg"));
-        $(".table-responsive").shouldHave(text("Mountain"));
-        $(".table-responsive").shouldHave(text("NCR Delhi"));
+        $(".table-responsive").shouldHave(
+                text("Student Name"), text("Momo Aang"),
+                text("Student Email"), text("Momo@avatar.com"),
+                text("Gender"), text("Male"),
+                text("Mobile"), text("8911888552"),
+                text("Date of Birth"), text("06 March,1998"),
+                text("Subjects"), text("Biology"),
+                text("Hobbies"), text("Reading"),
+                text("Picture"), text("picture.jpg"),
+                text("Address"), text("Mountain"),
+                text("State and City"), text("NCR Delhi"));
 
 
     }
