@@ -20,7 +20,7 @@ public class TextBoxTest {
     @Test
     void successFillTest () {
         open("/text-box");
-        $("[.main-header]").shouldHave(text("Text Box"));
+        $(".main-header").shouldHave(text("Text Box"));
 
 
         $("#userName").setValue("Alex");
