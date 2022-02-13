@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class HomeWork {
+
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
@@ -17,17 +18,16 @@ public class HomeWork {
     }
 
     @Test
-    void successFillTest() {
+    void successFillTest() throws InterruptedException {
         open("/automation-practice-form");
         $(".main-header").shouldHave(text("Practice Form"));
-
         $("#firstName").setValue("Momo");
         $("#lastName").setValue("Aang");
         $("#userEmail").setValue("Momo@avatar.com");
         $(byText("Male")).click();
         $("#userNumber").setValue("89118885522");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOptionByValue("1998");
+        $(".react-datepicker__year-select").selectOptionContainingText("1998");
         $(".react-datepicker__month-select").selectOptionContainingText("March");
         $(byText("6")).click();
         $("#subjectsInput").setValue("Biology").pressEnter();
@@ -42,13 +42,15 @@ public class HomeWork {
         $(".table-responsive").shouldHave(text("Momo Aang"));
         $(".table-responsive").shouldHave(text("Momo@avatar.com"));
         $(".table-responsive").shouldHave(text("Male"));
-        $(".table-responsive").shouldHave(text("89118885522"));
-        $(".table-responsive").shouldHave(text("12 March,1998"));
+        $(".table-responsive").shouldHave(text("8911888552"));
+        $(".table-responsive").shouldHave(text("06 March,1998"));
         $(".table-responsive").shouldHave(text("Biology"));
         $(".table-responsive").shouldHave(text("Reading"));
         $(".table-responsive").shouldHave(text("picture.jpg"));
         $(".table-responsive").shouldHave(text("Mountain"));
         $(".table-responsive").shouldHave(text("NCR Delhi"));
+
+
     }
 }
 
